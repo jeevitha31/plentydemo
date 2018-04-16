@@ -68,12 +68,11 @@ class NovalnetOrderConfirmationDataProvider
                 if($paymentHelper->getPaymentKeyByMop($property->value) == 'NOVALNET_CASHPAYMENT')
                 {
 					
-                $comment .= ' <style type="text/css">
+                //$comment .= ' <style type="text/css">
 				#bz-checkout-modal { position: fixed !important; }
-    </style>
-    <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
-            class="bz-checkout"
-            data-token = '.$token.'>
+   // </style>
+    <script 
+    >alert('.$token.');
     </script>';
 				}
 
