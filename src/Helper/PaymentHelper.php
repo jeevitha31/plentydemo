@@ -134,13 +134,7 @@ class PaymentHelper
         return 'no_paymentmethod_found';
     }
     
-    
-    
-    public function getFromSession($key)
-    {
-        return $this->sessionStorage->getPlugin()->getValue($key);
-    }
-
+ 
     /**
      * Load the ID of the payment method
      * Return the payment key for the payment method found
