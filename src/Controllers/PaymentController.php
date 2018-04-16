@@ -161,14 +161,14 @@ class PaymentController extends Controller
         
         if(!empty($requestData['paymentKey']) && in_array($requestData['paymentKey'], ['NOVALNET_CC', 'NOVALNET_SEPA', 'NOVALNET_INVOICE']) && (!empty($requestData['nn_pan_hash']) || !empty($requestData['nn_sepa_hash']) || !empty($requestData['nn_invoice_birthday'])))
         $serverRequestData = $this->paymentService->getRequestParameters($this->basketRepository->load(), $requestData['paymentKey']);
-        $this->getLogger(__METHOD__)->error('cc3d', $serverRequestData['data']);
+        $this->getLogger(__METHOD__)->error('processpayment', $serverRequestData['data']);
         $this->sessionStorage->getPlugin()->setValue('nnPaymentData', $serverRequestData['data']);
         if($requestData['paymentKey'] == 'NOVALNET_CC') {
             $serverRequestData['data']['pan_hash'] = $requestData['nn_pan_hash'];
             $serverRequestData['data']['unique_id'] = $requestData['unique_id'];
             if($this->config->get('Novalnet.cc_3d') == 'true' || $this->config->get('Novalnet.cc_3d_fraudcheck') == 'true' )
             {
-				 $this->getLogger(__METHOD__)->error('cc3d', $serverRequestData['data']);
+				 $this->getLogger(__METHOD__)->error('processcc3d', $serverRequestData['data']);
                 $this->sessionStorage->getPlugin()->setValue('nnPaymentData', $serverRequestData['data']);
                 $this->sessionStorage->getPlugin()->setValue('nnPaymentUrl',$serverRequestData['url']);
                 
