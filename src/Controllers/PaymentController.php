@@ -136,7 +136,7 @@ class PaymentController extends Controller
             $paymentRequestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
             $this->sessionStorage->getPlugin()->setValue('nnPaymentData', array_merge($paymentRequestData, $requestData));
 			
-			if(in_array($requestData['payment_type'],['ONLINE_TRANSFER','PRZELEWY24','GIROPAY','EPS','IDEAL','PAYPAL']) || ($requestData['payment_type'] == 'CREDITCARD' && $this->config->get('Novalnet.cc_3d') == 'true')) 
+			if(in_array($requestData['payment_type'],['ONLINE_TRANSFER','PRZELEWY24','GIROPAY','EPS','IDEAL','PAYPAL']) || ($requestData['payment_type'] == 'CREDITCARD' && $this->config->get('Novalnet.cc_3d') == 'true') || $config->get('Novalnet.cc_3d_fraudcheck') == 'true') 
 				{
 					$this->paymentService->validateResponse();
 				}
