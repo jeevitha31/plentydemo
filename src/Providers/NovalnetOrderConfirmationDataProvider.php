@@ -38,7 +38,7 @@ class NovalnetOrderConfirmationDataProvider
     public function call(Twig $twig, $args)
     {
         $paymentHelper = pluginApp(PaymentHelper::class);
-      
+      $token=$paymentHelper->getFromSession('barzahlen');
         $order = $args[0];
 		
         if(isset($order->order))
@@ -73,7 +73,7 @@ class NovalnetOrderConfirmationDataProvider
     </style>
     <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
             class="bz-checkout"
-            data-token = djF8Y2hrdHxzbHAtMzgzZmZkMDEtMTA3Ny00YmJkLTliMGQtYmE5ZGJkYjdiMzBlfGF1MFNwaVVMRUlMZEZTVGxLRXphV1RVSlRKU0UrQ1BrSzVXUWEzUW5kWUk9>
+            data-token = '.$token.'>
     </script>';
 				}
 
