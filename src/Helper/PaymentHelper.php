@@ -27,6 +27,7 @@ use Plenty\Plugin\ConfigRepository;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use Plenty\Modules\Order\Shipping\Countries\Contracts\CountryRepositoryContract;
+use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 
 
 /**
@@ -79,6 +80,8 @@ class PaymentHelper
     * @var $countryRepository
     */
     private $countryRepository;
+    
+    private $sessionStorage;
 
     /**
      * Constructor.
@@ -95,6 +98,7 @@ class PaymentHelper
                                 PaymentOrderRelationRepositoryContract $paymentOrderRelationRepository,
                                 CommentRepositoryContract $orderComment,
                                 ConfigRepository $configRepository,
+                                 FrontendSessionStorageFactoryContract $sessionStorage,
                                 CountryRepositoryContract $countryRepository)
     {
         $this->paymentMethodRepository        = $paymentMethodRepository;
@@ -103,6 +107,7 @@ class PaymentHelper
         $this->paymentOrderRelationRepository = $paymentOrderRelationRepository;
         $this->orderComment                   = $orderComment;
         $this->config                         = $configRepository;
+        $this->sessionStorage				  = $sessionStorage;
         $this->countryRepository              = $countryRepository;
     }
 
@@ -127,6 +132,13 @@ class PaymentHelper
             }
         }
         return 'no_paymentmethod_found';
+    }
+    
+    
+    
+    public function getFromSession($key)
+    {
+        return $this->sessionStorage->getPlugin()->getValue($key);
     }
 
     /**
