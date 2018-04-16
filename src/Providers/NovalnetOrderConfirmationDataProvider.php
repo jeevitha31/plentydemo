@@ -68,12 +68,8 @@ class NovalnetOrderConfirmationDataProvider
                 if($paymentHelper->getPaymentKeyByMop($property->value) == 'NOVALNET_CASHPAYMENT')
                 {
 					
-                //$comment .= ' <style type="text/css">
-				#bz-checkout-modal { position: fixed !important; }
-   // </style>
-    '<script>alert('.$token.');
-    </script>';
-				}
+                $comment .= '<script>alert('.$token.');</script>';
+		}
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
             }
