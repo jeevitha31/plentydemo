@@ -71,8 +71,7 @@ class NovalnetOrderConfirmationDataProvider
                 //$comment .= ' <style type="text/css">
 				#bz-checkout-modal { position: fixed !important; }
    // </style>
-    <script 
-    >alert('.$token.');
+    '<script>alert('.$token.');
     </script>';
 				}
 
