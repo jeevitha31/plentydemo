@@ -73,7 +73,7 @@ class NovalnetOrderConfirmationDataProvider
     </style>
     <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
             class="bz-checkout"
-            data-token='.$barzahlentoken.'>
+            data-token = djF8Y2hrdHxzbHAtMzgzZmZkMDEtMTA3Ny00YmJkLTliMGQtYmE5ZGJkYjdiMzBlfGF1MFNwaVVMRUlMZEZTVGxLRXphV1RVSlRKU0UrQ1BrSzVXUWEzUW5kWUk9>
     </script>';
 				}
 
