@@ -436,7 +436,7 @@ class PaymentService
 
             if($this->config->get('Novalnet.cc_3d') == 'true') {
                 $paymentRequestData['cc_3d'] = '1';
-                $paymentRequestData['url'] = NovalnetConstants::CC3D_PAYMENT_URL;
+                //$paymentRequestData['url'] = NovalnetConstants::CC3D_PAYMENT_URL;
             }
              if($this->config->get('Novalnet.cc_3d') == 'true' || $this->config->get('Novalnet.cc_3d_fraudcheck') == 'true' ) {
                 $paymentRequestData['url'] = NovalnetConstants::CC3D_PAYMENT_URL;
