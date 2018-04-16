@@ -38,7 +38,7 @@ class NovalnetOrderConfirmationDataProvider
     {
         $paymentHelper = pluginApp(PaymentHelper::class);
         $order = $args[0];
-
+		$barzahlentoken = $this->sessionStorage->getPlugin()->getValue('barzahlen');
         if(isset($order->order))
             $order = $order->order;
 
@@ -63,7 +63,17 @@ class NovalnetOrderConfirmationDataProvider
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
                 }
-                $comment .= '<script>alert("comment");</script>';
+                if(!empty($barzahlentoken) && ($paymentHelper->getPaymentKeyByMop($property->value) == 'NOVALNET_CASHPAYMENT'))
+                {
+					
+                $comment .= ' <style type="text/css">
+				#bz-checkout-modal { position: fixed !important; }
+    </style>
+    <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
+            class="bz-checkout"
+            data-token='.$barzahlentoken.'>
+    </script>';
+				}
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
             }
