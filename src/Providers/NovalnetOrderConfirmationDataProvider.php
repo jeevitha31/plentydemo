@@ -19,6 +19,7 @@ use Plenty\Plugin\Templates\Twig;
 use Novalnet\Helper\PaymentHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
+use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 
 /**
  * Class NovalnetOrderConfirmationDataProvider
@@ -37,8 +38,9 @@ class NovalnetOrderConfirmationDataProvider
     public function call(Twig $twig, $args)
     {
         $paymentHelper = pluginApp(PaymentHelper::class);
+        $sessionstorage = pluginApp(FrontendSessionStorageFactoryContract::class);
         $order = $args[0];
-		$barzahlentoken = $this->sessionStorage->getPlugin()->getValue('barzahlen');
+		$barzahlentoken = $sessionstorage->getPlugin()->getValue('barzahlen');
         if(isset($order->order))
             $order = $order->order;
 
