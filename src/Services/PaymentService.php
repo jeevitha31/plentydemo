@@ -164,7 +164,9 @@ class PaymentService
      */
     public function validateResponse()
 		{
+			
 					$requestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
+					 $this->getLogger(__METHOD__)->error('validate response.', $requestData);
                     $this->sessionStorage->getPlugin()->setValue('nnPaymentData',null);
                     if(isset($requestData['status']) && in_array($requestData['status'], ['90', '100']))
                     {
