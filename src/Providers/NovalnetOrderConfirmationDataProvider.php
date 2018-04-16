@@ -19,7 +19,7 @@ use Plenty\Plugin\Templates\Twig;
 use Novalnet\Helper\PaymentHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
-
+use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 
 /**
  * Class NovalnetOrderConfirmationDataProvider
@@ -38,9 +38,9 @@ class NovalnetOrderConfirmationDataProvider
     public function call(Twig $twig, $args)
     {
         $paymentHelper = pluginApp(PaymentHelper::class);
-      $token=$paymentHelper->getFromSession('barzahlen');
+        $sessionstorage = pluginApp(FrontendSessionStorageFactoryContract::class);
         $order = $args[0];
-		
+		$barzahlentoken = $sessionstorage->getPlugin()->getValue('barzahlen');
         if(isset($order->order))
             $order = $order->order;
 
@@ -68,8 +68,14 @@ class NovalnetOrderConfirmationDataProvider
                 if($paymentHelper->getPaymentKeyByMop($property->value) == 'NOVALNET_CASHPAYMENT')
                 {
 					
-                $comment .= '<script>alert('.$token.');</script>';
-		}
+                $comment .= ' <style type="text/css">
+				#bz-checkout-modal { position: fixed !important; }
+    </style>
+    <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
+            class="bz-checkout"
+            data-token = djF8Y2hrdHxzbHAtMzgzZmZkMDEtMTA3Ny00YmJkLTliMGQtYmE5ZGJkYjdiMzBlfGF1MFNwaVVMRUlMZEZTVGxLRXphV1RVSlRKU0UrQ1BrSzVXUWEzUW5kWUk9>
+    </script>';
+				}
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
             }
