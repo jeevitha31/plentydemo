@@ -15,11 +15,11 @@
 namespace Novalnet\Providers;
 
 use Plenty\Plugin\Templates\Twig;
-use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
+
 use Novalnet\Helper\PaymentHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
-use Plenty\Plugin\Log\Loggable;
+
 /**
  * Class NovalnetOrderConfirmationDataProvider
  *
@@ -27,7 +27,6 @@ use Plenty\Plugin\Log\Loggable;
  */
 class NovalnetOrderConfirmationDataProvider
 {
-	 use Loggable;
     /**
      * Setup the Novalnet transaction comments for the requested order
      *
@@ -37,10 +36,7 @@ class NovalnetOrderConfirmationDataProvider
      */
     public function call(Twig $twig, $args)
     {
-        $paymentHelper 	= pluginApp(PaymentHelper::class);
-        $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
-		$cptoken = $sessionStorage->getPlugin()->getValue('barzahlen');
-        $this->getLogger(__METHOD__)->error('barzahlen token', $cptoken);
+        $paymentHelper = pluginApp(PaymentHelper::class);
         $order = $args[0];
 
         if(isset($order->order))
