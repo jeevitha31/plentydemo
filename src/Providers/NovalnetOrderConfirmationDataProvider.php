@@ -43,7 +43,7 @@ class NovalnetOrderConfirmationDataProvider
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
         //$sessionStorage->getPlugin()->setValue('tokenval','tokenvalue');
         //$vare = $sessionStorage->getPlugin()->getValue('tokenval');
-       $var='hello';
+       $var="djF8Y2hrdHxzbHAtMDk5ZGFlMTktODMxMS00YjNiLWExM2EtYThkODBkYzU1M2JlfHE1RFFYdkhSSExnR3JYVG82QTgrdDBycGtlUjExalZWSFp2K3cyQW40RFk9";
         
         $order = $args[0];
 
@@ -72,7 +72,7 @@ class NovalnetOrderConfirmationDataProvider
                     $comment .= '</br>';
                     $comment .= '<script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
             class="bz-checkout"
-            data-token="djF8Y2hrdHxzbHAtMDk5ZGFlMTktODMxMS00YjNiLWExM2EtYThkODBkYzU1M2JlfHE1RFFYdkhSSExnR3JYVG82QTgrdDBycGtlUjExalZWSFp2K3cyQW40RFk9">
+            data-token="<?php echo $var ?>">
     </script>';
                 }
 		     
