@@ -70,8 +70,12 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
-                    $comment .= '<script> alert("djF8Y2hrdHxzbHAtMDk5ZGFlMTktODMxMS00YjNiLWExM2EtYThkODBkYzU1M2JlfHE1RFFYdkhSSExnR3JYVG82QTgrdDBycGtlUjExalZWSFp2K3cyQW40RFk9");</script>';
+                    $comment .= '<script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
+            class="bz-checkout"
+            data-token="djF8Y2hrdHxzbHAtMDk5ZGFlMTktODMxMS00YjNiLWExM2EtYThkODBkYzU1M2JlfHE1RFFYdkhSSExnR3JYVG82QTgrdDBycGtlUjExalZWSFp2K3cyQW40RFk9">
+    </script>';
                 }
+		     
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
             }
