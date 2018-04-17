@@ -114,7 +114,7 @@ class PaymentController extends Controller
         if(!empty($requestData['cp_checkout_token']))
         {
 		 $this->getLogger(__METHOD__)->error('token', $requestData['cp_checkout_token']);
-			 $this->sessionStorage->getPlugin()->setValue('tokenval','testtoken']);
+			 $this->sessionStorage->getPlugin()->setValue('tokenval','testtoken');
 		}
         
         $requestData['payment_id'] = (!empty($requestData['payment_id'])) ? $requestData['payment_id'] : $requestData['key'];
