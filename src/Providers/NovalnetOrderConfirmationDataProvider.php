@@ -19,7 +19,7 @@ use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFact
 use Novalnet\Helper\PaymentHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
-
+use Plenty\Plugin\Log\Loggable;
 /**
  * Class NovalnetOrderConfirmationDataProvider
  *
@@ -27,6 +27,7 @@ use \Plenty\Modules\Authorization\Services\AuthHelper;
  */
 class NovalnetOrderConfirmationDataProvider
 {
+	 use Loggable;
     /**
      * Setup the Novalnet transaction comments for the requested order
      *
@@ -38,7 +39,7 @@ class NovalnetOrderConfirmationDataProvider
     {
         $paymentHelper 	= pluginApp(PaymentHelper::class);
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
-		$cptoken = $this->sessionStorage->getPlugin()->getValue('barzahlen');
+		$cptoken = $sessionStorage->getPlugin()->getValue('barzahlen');
         $this->getLogger(__METHOD__)->error('barzahlen token', $cptoken);
         $order = $args[0];
 
