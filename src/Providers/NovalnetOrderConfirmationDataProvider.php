@@ -41,9 +41,9 @@ class NovalnetOrderConfirmationDataProvider
         $paymentHelper = pluginApp(PaymentHelper::class);
         $PaymentRepositoryContract = pluginApp(PaymentRepositoryContract::class);
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
-        $sessionStorage->getPlugin()->setValue('tokenval','tokenvalue');
-        $vare = $sessionStorage->getPlugin()->getValue('tokenval');
-        $var='hello';
+        //$sessionStorage->getPlugin()->setValue('tokenval','tokenvalue');
+        //$vare = $sessionStorage->getPlugin()->getValue('tokenval');
+       // $var='hello';
         
         $order = $args[0];
 
@@ -70,7 +70,7 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
-                    $comment .= '<script> alert('.$var.');</script>';
+                    $comment .= '<script> alert(".$var.");</script>';
                 }
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
