@@ -70,7 +70,7 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
-                    $comment .= '<script> var note='heloo';alert(note);</script>';
+                    $comment .= '<script> var note="heloo";alert(note);</script>';
                 }
 		     
 
