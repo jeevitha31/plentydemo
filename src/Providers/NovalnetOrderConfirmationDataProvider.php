@@ -70,7 +70,7 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
-                    $comment .=  $twig->render('Novalnet::tokenvalue', ['tokenform' => $var]);
+                    
                 }
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
