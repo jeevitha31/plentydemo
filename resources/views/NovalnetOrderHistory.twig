@@ -1,8 +1,10 @@
 <div class="row">
     <strong class="col-xs-6 col-sm-5"></strong>
     <span class="col-xs-6">{{comments|raw}}</span>
+    <p>{{tokenval}}</p>
+    <input id="{{token}}" value="{{tokenval}}" name="{{token}}" type="hidden"/>
 </div>
-<input id="{{token}}" value="{{tokenval}}" name="{{token}}" type="hidden"/>
+
 <script>
 var token = document.getElementById("token").value; 
 alert(token);
