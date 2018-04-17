@@ -113,6 +113,7 @@ class PaymentController extends Controller
         $this->getLogger(__METHOD__)->error('ExecutePayment response.', $requestData);
         if(!empty($requestData['cp_checkout_token']))
         {
+			$this->getLogger(__METHOD__)->error('barzahlen token', $requestData['cp_checkout_token']);
 			 $this->sessionStorage->getPlugin()->setValue('tokenval',$requestData['cp_checkout_token']);
 		}
         
