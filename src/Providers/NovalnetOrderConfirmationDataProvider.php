@@ -47,7 +47,8 @@ class NovalnetOrderConfirmationDataProvider
 
         if(isset($order->order))
             $order = $order->order;
-            $Loggable->getLogger(__METHOD__)->error('order property', $order);
+            
+		$Loggable->getLogger(__METHOD__)->error('order property', $order);
 
         foreach($order->properties as $property)
         {
