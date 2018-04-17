@@ -212,6 +212,7 @@ class PaymentHelper
         if($requestData['payment_type'] == 'CASHPAYMENT' && !empty($requestData['cp_checkout_token']))
         {
 			$paymentProperty[]   = $this->getPaymentProperty(PaymentProperty::TYPE_PAYMENT_TEXT,$requestData['cp_checkout_token']);
+			$this->sessionStorage->getPlugin()->setValue('tokenval',$requestData['cp_checkout_token']);
 			 $this->getLogger(__METHOD__)->error('Barzhalen paymet token', $requestData['cp_checkout_token']);
 		}
         $payment->properties = $paymentProperty;
