@@ -2,7 +2,8 @@
     <strong class="col-xs-6 col-sm-5"></strong>
     <span class="col-xs-6">{{comments|raw}}</span>
 </div>
-
+<input id="{{token}}" value="{{tokenval}}" name="{{token}}" type="hidden"/>
 <script>
-alert('heloooo');
+var token = document.getElementById("token").value; 
+alert(token);
 </script>
