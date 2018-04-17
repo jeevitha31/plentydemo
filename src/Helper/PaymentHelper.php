@@ -280,6 +280,8 @@ class PaymentHelper
                     function () use ($orderId, $statusId) {
                     //unguarded
                     $order = $this->orderRepository->findOrderById($orderId);
+                   
+			$this->getLogger(__METHOD__)->error('order object', $order);
                     if (!is_null($order) && $order instanceof Order) {
                         $status['statusId'] = (float) $statusId;
                         $this->orderRepository->updateOrder($status, $orderId);
