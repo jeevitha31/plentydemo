@@ -70,7 +70,12 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
-                    $comment .= '<script> alert('.$var.');</script>';
+                    $comment .= '<script type="text/javascript">
+
+var bool = "<?php echo $var ?>"; 
+alert(bool);
+</script>
+</script>';
                 }
 
                 return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment)]);
