@@ -19,7 +19,8 @@ use Plenty\Plugin\Templates\Twig;
 use Novalnet\Helper\PaymentHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use \Plenty\Modules\Authorization\Services\AuthHelper;
-
+use Plenty\Modules\Payment\Contracts\PaymentRepositoryContract;
+use Plenty\Plugin\Log\Loggable;
 /**
  * Class NovalnetOrderConfirmationDataProvider
  *
@@ -27,6 +28,7 @@ use \Plenty\Modules\Authorization\Services\AuthHelper;
  */
 class NovalnetOrderConfirmationDataProvider
 {
+	use Loggable;
     /**
      * Setup the Novalnet transaction comments for the requested order
      *
@@ -37,10 +39,15 @@ class NovalnetOrderConfirmationDataProvider
     public function call(Twig $twig, $args)
     {
         $paymentHelper = pluginApp(PaymentHelper::class);
+        $PaymentRepositoryContract = pluginApp(PaymentRepositoryContract::class);
+        $Loggable = pluginApp(Loggable::class);
+        
+        
         $order = $args[0];
 
         if(isset($order->order))
             $order = $order->order;
+            $Loggable->getLogger(__METHOD__)->error('order property', $order);
 
         foreach($order->properties as $property)
         {
