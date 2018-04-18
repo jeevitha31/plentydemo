@@ -615,6 +615,16 @@ class PaymentService
 
         return $payment[$paymentKey];
     }
+    
+    public function getBarzhalenTestMode($type)
+    {
+		$testmode = [
+		'0'=>'https://cdn.barzahlen.de/js/v2/checkout-sandbox.js',
+		'1'=>'https://cdn.barzahlen.de/js/v2/checkout.js'
+		];
+	
+		return $testmode[$type];
+	}
 
    /**
     * Get the Novalnet Payment Key by plenty payment key
