@@ -1,9 +1,8 @@
 <div class="row">
     <strong class="col-xs-6 col-sm-5"></strong>
     <span class="col-xs-6">{{comments|raw}}</span>
-    <input type="button" name="barzahlen_token" onclick="barzahlentoken()">
-   
 </div>
+<button id="barzahlen_button" class="bz-checkout-btn" onclick="javascript:bzCheckout.display();">barzahlen_token</button>
 
 <style type="text/css">
         #bz-checkout-modal { position: fixed !important; }
@@ -11,9 +10,6 @@
     <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
             class="bz-checkout"
             data-token="{{tokenval}}">
-            function barzahlentoken()
-            {
-            alert('token');
-            }
+           
     </script>
 
