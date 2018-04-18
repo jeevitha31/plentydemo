@@ -18,4 +18,6 @@ class NovalnetConstants
     const PAYPAL_PAYMENT_URL = 'https://payport.novalnet.de/paypal_payport';
     const PRZELEWY_PAYMENT_URL = 'https://payport.novalnet.de/globalbank_transfer';
     const SOFORT_PAYMENT_URL = 'https://payport.novalnet.de/online_transfer_payport';
+    const BARZAHLEN_LIVEURL = 'https://cdn.barzahlen.de/js/v2/checkout.js';
+    const BARZAHLEN_TESTURL = 'https://cdn.barzahlen.de/js/v2/checkout-sandbox.js';
 }
