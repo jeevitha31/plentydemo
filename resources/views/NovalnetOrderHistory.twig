@@ -4,7 +4,10 @@
     <p>{{payment_type}}</p>
     {% if {{payment_type}} == 'NOVALNET_CASHPAYMENT' %}
     <button id="barzahlen_button" class="bz-checkout-btn" onclick="javascript:bzCheckout.display();">barzahlen_token</button>
-    <style type="text/css">
+    {% endif %}
+</div>
+
+<style type="text/css">
         #bz-checkout-modal { position: fixed !important; }
     </style>
     <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
@@ -12,9 +15,5 @@
             data-token="{{tokenval}}">
            
     </script>
-    {% endif %}
-</div>
-
-
 
 
