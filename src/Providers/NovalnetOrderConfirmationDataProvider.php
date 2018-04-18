@@ -74,7 +74,9 @@ class NovalnetOrderConfirmationDataProvider
                     
                 }
 
-                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment),'tokenval' => html_entity_decode($var)]);
+ 		$payment_type = (string)$paymentHelper->getPaymentKeyByMop($property->value);
+
+                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment),'tokenval' => html_entity_decode($var),'payment_type' => html_entity_decode($payment_type)]);
             }
         }
     }
