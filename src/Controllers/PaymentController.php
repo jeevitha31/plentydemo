@@ -111,6 +111,7 @@ class PaymentController extends Controller
     {
         $requestData = $this->request->all();
         $this->getLogger(__METHOD__)->error('ExecutePayment response.', $requestData);
+	 $this->sessionStorage->getPlugin()->setValue('testmode',$this->paymentService->getBarzhalenTestMode($requestData['test_mode']));
         
         if($requestData['payment_type'] == 'CASHPAYMENT' && !empty($requestData['cp_checkout_token']))
 			{
