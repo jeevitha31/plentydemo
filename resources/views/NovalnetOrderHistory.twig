@@ -2,9 +2,9 @@
     <strong class="col-xs-6 col-sm-5"></strong>
     <span class="col-xs-6">{{comments|raw}}</span>
     <p id="token">{{tokenval}}</p>
-    <input id="{{val}}" value="{{tokenval}}" name="{{val}}" type="text"/>
+    <input id="val" value="{{tokenval}}" name="val" type="text"/>
 </div>
 <script>
-alert('token');
+alert(document.getElementById('val').value);
 </script>
 
