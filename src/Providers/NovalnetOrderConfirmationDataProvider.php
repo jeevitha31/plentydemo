@@ -41,10 +41,9 @@ class NovalnetOrderConfirmationDataProvider
         $paymentHelper = pluginApp(PaymentHelper::class);
         $PaymentRepositoryContract = pluginApp(PaymentRepositoryContract::class);
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
-        $token =  (string)$sessionStorage->getPlugin()->getValue('barzhalentoken');
-		$testmode =  (string)$sessionStorage->getPlugin()->getValue('barzhalentestmode');
-       // $barzhalentoken = (string)$token;
-		//$barzhalentestmode =  (string)$testmode;
+        $barzhalentoken =  (string)$sessionStorage->getPlugin()->getValue('barzhalentoken');
+		$barzhalentestmode =  (string)$sessionStorage->getPlugin()->getValue('barzhalentestmode');
+     
         
         $order = $args[0];
 
@@ -77,7 +76,7 @@ class NovalnetOrderConfirmationDataProvider
 
 				$payment_type = (string)$paymentHelper->getPaymentKeyByMop($property->value);
 
-                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment),'tokenval' => html_entity_decode($token),'payment_type' => html_entity_decode($payment_type),'testmode' => html_entity_decode($testmode)]);
+                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment),'barzhalentoken' => html_entity_decode($barzhalentoken),'payment_type' => html_entity_decode($payment_type),'testmode' => html_entity_decode($barzhalentestmode)]);
             }
         }
     }
