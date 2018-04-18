@@ -2,7 +2,7 @@
     <strong class="col-xs-6 col-sm-5"></strong>
     <span class="col-xs-6">{{comments|raw}}</span>
     <p>{{payment_type}}</p>
-   {% if {{payment_type}} == 'NOVALNET_CASHPAYMENT' %}
+   {% if payment_type == 'NOVALNET_CASHPAYMENT' %}
     <button id="barzahlen_button" class="bz-checkout-btn" onclick="javascript:bzCheckout.display();">barzahlen_token</button>
   {% endif %}
 </div>
