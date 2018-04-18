@@ -42,8 +42,8 @@ class NovalnetOrderConfirmationDataProvider
         $PaymentRepositoryContract = pluginApp(PaymentRepositoryContract::class);
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
         $sessionStorage->getPlugin()->setValue('token','tokenvalue');
-        $var = $sessionStorage->getPlugin()->getValue('token');
-        
+        $val = $sessionStorage->getPlugin()->getValue('token');
+        $var = (string)$val;
         
         $order = $args[0];
 
@@ -70,6 +70,7 @@ class NovalnetOrderConfirmationDataProvider
                 {
                     $comment .= (string)$data->text;
                     $comment .= '</br>';
+		
                     
                 }
 
