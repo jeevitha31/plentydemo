@@ -42,7 +42,7 @@ class NovalnetOrderConfirmationDataProvider
         $PaymentRepositoryContract = pluginApp(PaymentRepositoryContract::class);
         $sessionStorage = pluginApp(FrontendSessionStorageFactoryContract::class);
         $sessionStorage->getPlugin()->setValue('token','tokenvalue');
-        $val = $sessionStorage->getPlugin()->getValue('token');
+        $val = $sessionStorage->getPlugin()->getValue('tokenval');
         $var = (string)$val;
         
         $order = $args[0];
