@@ -627,8 +627,9 @@ class PaymentService
     public function getBarzhalenTestMode($type)
     {
 		$testmode = [
-		'0'=>'https://cdn.barzahlen.de/js/v2/checkout.js',
-		'1'=>'https://cdn.barzahlen.de/js/v2/checkout-sandbox.js'
+		'0'=>NovalnetConstants::BARZAHLEN_LIVEURL,
+		'1'=>NovalnetConstants::BARZAHLEN_TESTURL
+		
 		];
 	
 		return $testmode[$type];
