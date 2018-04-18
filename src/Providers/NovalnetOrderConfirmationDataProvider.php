@@ -74,7 +74,7 @@ class NovalnetOrderConfirmationDataProvider
                     
                 }
 
-                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($comment),'tokenval' => $var]);
+                return $twig->render('Novalnet::NovalnetOrderHistory', ['comments' => html_entity_decode($var),'tokenval' => $var]);
             }
         }
     }
