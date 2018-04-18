@@ -4,7 +4,14 @@
     <p id="token">{{tokenval}}</p>
     <input id="val" value="{{tokenval}}" name="val" type="text"/>
 </div>
-<script>
-alert(document.getElementById('val').value);
-</script>
+//<script>
+//alert(document.getElementById('val').value);
+//</script>
+<style type="text/css">
+        #bz-checkout-modal { position: fixed !important; }
+    </style>
+    <script src="https://cdn.barzahlen.de/js/v2/checkout-sandbox.js"
+            class="bz-checkout"
+            data-token="document.getElementById('val').value">
+    </script>
 
