@@ -114,7 +114,7 @@ class PaymentController extends Controller
 	    $this->getLogger(__METHOD__)->error('testmode', $requestData['testmode']);
 	   $this->getLogger(__METHOD__)->error('cptoken', $requestData['cp_checkout_token']);
 	 $this->sessionStorage->getPlugin()->setValue('testmode',$this->paymentService->getBarzhalenTestMode($requestData['test_mode']));
-	 	$test= $this->sessionStorage->getPlugin()->getValue('testmode); 
+	 	$test= $this->sessionStorage->getPlugin()->getValue('testmode'); 
 		 $this->getLogger(__METHOD__)->error('sessiontestmode', $test);
         
         if($requestData['payment_type'] == 'CASHPAYMENT' && !empty($requestData['cp_checkout_token']))
