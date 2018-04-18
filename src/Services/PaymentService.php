@@ -624,7 +624,14 @@ class PaymentService
         return $payment[$paymentKey];
     }
     
-    public function getBarzhalenTestMode($type)
+    
+    /**
+    * Get the Payment process URL by using Testmode
+    *
+    * @param string $type
+    * @return string
+    */
+    public function getBarzhalenTestMode($testmode)
     {
 		$testmode = [
 		'0'=>NovalnetConstants::BARZAHLEN_LIVEURL,
