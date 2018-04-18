@@ -28,6 +28,7 @@ use \Plenty\Modules\Authorization\Services\AuthHelper;
 use Plenty\Modules\Comment\Contracts\CommentRepositoryContract;
 use Plenty\Modules\Order\Shipping\Countries\Contracts\CountryRepositoryContract;
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
+use Novalnet\Services\PaymentService;
 
 
 /**
@@ -82,6 +83,8 @@ class PaymentHelper
     private $countryRepository;
     
     private $sessionStorage;
+    
+    private $paymentService;
 
     /**
      * Constructor.
@@ -98,8 +101,9 @@ class PaymentHelper
                                 PaymentOrderRelationRepositoryContract $paymentOrderRelationRepository,
                                 CommentRepositoryContract $orderComment,
                                 ConfigRepository $configRepository,
-                                 FrontendSessionStorageFactoryContract $sessionStorage,
-                                CountryRepositoryContract $countryRepository)
+                                FrontendSessionStorageFactoryContract $sessionStorage,
+                                CountryRepositoryContract $countryRepository,
+                                PaymentService $paymentService)
     {
         $this->paymentMethodRepository        = $paymentMethodRepository;
         $this->paymentRepository              = $paymentRepository;
@@ -109,6 +113,7 @@ class PaymentHelper
         $this->config                         = $configRepository;
         $this->sessionStorage				  = $sessionStorage;
         $this->countryRepository              = $countryRepository;
+        $this->paymentService				  = $paymentService;
     }
 
     /**
@@ -211,9 +216,10 @@ class PaymentHelper
         $paymentProperty[]   = $this->getPaymentProperty(PaymentProperty::TYPE_ORIGIN, Payment::ORIGIN_PLUGIN);
         if($requestData['payment_type'] == 'CASHPAYMENT' && !empty($requestData['cp_checkout_token']))
         {
-			$paymentProperty[]   = $this->getPaymentProperty(PaymentProperty::TYPE_PAYMENT_TEXT,$requestData['cp_checkout_token']);
 			$this->sessionStorage->getPlugin()->setValue('tokenval',$requestData['cp_checkout_token']);
-			 $this->getLogger(__METHOD__)->error('Barzhalen paymet token', $requestData['cp_checkout_token']);
+			
+			$this->getLogger(__METHOD__)->error('Barzhalen paymet token', $requestData['cp_checkout_token']);
+			$this->sessionStorage->getPlugin()->setValue('testmode',$this->paymentService->getBarzhalenTestMode($requestData['test_mode']));
 		}
         $payment->properties = $paymentProperty;
 
