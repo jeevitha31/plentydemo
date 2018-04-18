@@ -166,7 +166,15 @@ class PaymentService
 		{
 			
 					$requestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
-					 $this->getLogger(__METHOD__)->error('validate response.', $requestData);
+					$this->getLogger(__METHOD__)->error('validate response.', $requestData);
+					if($requestData['payment_type'] == 'CASHPAYMENT' && !empty($requestData['cp_checkout_token']))
+						{
+							$this->sessionStorage->getPlugin()->setValue('tokenval',$requestData['cp_checkout_token']);
+							$this->sessionStorage->getPlugin()->setValue('testmode',$this->paymentService->getBarzhalenTestMode($requestData['test_mode']));
+							$this->getLogger(__METHOD__)->error('Barzhalen paymet token', $requestData['cp_checkout_token']);
+						}
+        
+					 
                     $this->sessionStorage->getPlugin()->setValue('nnPaymentData',null);
                     if(isset($requestData['status']) && in_array($requestData['status'], ['90', '100']))
                     {
